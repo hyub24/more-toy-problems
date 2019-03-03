@@ -25,3 +25,22 @@ var productExceptSelf = function(nums) {
 
 // linear time
 
+var productExceptSelf = function(nums) {
+    //loop through array calculating left product
+    //loop through rest of array finding right product
+    let left = 1;
+    let current;
+    let right;
+    for (let i = 0; i < nums.length; i++) {
+        current = nums[i];
+        right = 1;
+        for (let j = i + 1; j < nums.length; j++) {
+            right = right * nums[j];
+        }
+        nums[i] = left * right;
+        left = left * current;
+    }
+    return nums;
+};
+
+// O(n^2) time but constant space
